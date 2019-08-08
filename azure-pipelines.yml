@@ -27,7 +27,12 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: CopyFiles@2
+  inputs:
+    contents: 'src/CredentialManagement/bin/Release/**'
+    targetFolder: $(Build.ArtifactStagingDirectory)    
+
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: 'src/CredentialManagement/bin/Release/CredentialManagement.Standard.*.nupkg'
-    artifactName: Package
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: Release
