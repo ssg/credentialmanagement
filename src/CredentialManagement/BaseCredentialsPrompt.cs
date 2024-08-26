@@ -20,8 +20,6 @@ namespace CredentialManagement
         string _title;
         int _errorCode;
 
-        int _dialogFlags;
-
 
         #endregion
 
@@ -43,11 +41,11 @@ namespace CredentialManagement
         {
             if (add)
             {
-                _dialogFlags |= flag;
+                DialogFlags |= flag;
             }
             else
             {
-                _dialogFlags &= ~flag;
+                DialogFlags &= ~flag;
             }
         }
 
@@ -241,10 +239,7 @@ namespace CredentialManagement
 
         public abstract bool GenericCredentials { get; set; }
 
-        protected int DialogFlags
-        {
-            get { return _dialogFlags; }
-        }
+        protected int DialogFlags { get; private set; }
 
         #endregion
 
